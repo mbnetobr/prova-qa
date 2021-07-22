@@ -1,0 +1,318 @@
+{
+	"id": "6ef6dad9-f792-41c6-b5c4-80f9640cc974",
+	"name": "AUTHOR - API pública de Livros ",
+	"timestamp": "2021-07-22T23:20:50.356Z",
+	"collection_id": "13559864-cc66dd1b-de4b-4395-a34f-d4141eb26d4b",
+	"folder_id": 0,
+	"environment_id": "12108c54-9d8e-4a1e-9f54-bed44034f3ab",
+	"totalPass": 60,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "6983810a-5295-463a-a18f-062a4734e39f",
+			"name": "GET Todos Autores",
+			"time": 232,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Successo na requisão do GET": true,
+				"Resposta da requisão do GET menor do que 2s": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Successo na requisão do GET": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Resposta da requisão do GET menor do que 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				232,
+				224,
+				232,
+				232
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Successo na requisão do GET": true,
+					"Resposta da requisão do GET menor do que 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Successo na requisão do GET": true,
+					"Resposta da requisão do GET menor do que 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Successo na requisão do GET": true,
+					"Resposta da requisão do GET menor do que 2s": true
+				},
+				{
+					"Status code is 200": true,
+					"Successo na requisão do GET": true,
+					"Resposta da requisão do GET menor do que 2s": true
+				}
+			]
+		},
+		{
+			"id": "57ce42ed-9889-4eb4-8ed0-3c208b6e4e70",
+			"name": "GET Autor Especifico",
+			"time": 221,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Successo na requisão do GET": true,
+				"Response time is less than 3000ms": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Successo na requisão do GET": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Response time is less than 3000ms": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				230,
+				223,
+				226,
+				221
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Successo na requisão do GET": true,
+					"Response time is less than 3000ms": true
+				},
+				{
+					"Status code is 200": true,
+					"Successo na requisão do GET": true,
+					"Response time is less than 3000ms": true
+				},
+				{
+					"Status code is 200": true,
+					"Successo na requisão do GET": true,
+					"Response time is less than 3000ms": true
+				},
+				{
+					"Status code is 200": true,
+					"Successo na requisão do GET": true,
+					"Response time is less than 3000ms": true
+				}
+			]
+		},
+		{
+			"id": "14b86304-087e-4ecc-a36a-9b2e41a5fc6d",
+			"name": "POST",
+			"time": 222,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status de sucesso código igual a 200": true,
+				"Successo na requisão do POST": true,
+				"Resposta da requisão do POST menor do que 2s": true
+			},
+			"testPassFailCounts": {
+				"Status de sucesso código igual a 200": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Successo na requisão do POST": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Resposta da requisão do POST menor do que 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				220,
+				221,
+				225,
+				222
+			],
+			"allTests": [
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do POST": true,
+					"Resposta da requisão do POST menor do que 2s": true
+				},
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do POST": true,
+					"Resposta da requisão do POST menor do que 2s": true
+				},
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do POST": true,
+					"Resposta da requisão do POST menor do que 2s": true
+				},
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do POST": true,
+					"Resposta da requisão do POST menor do que 2s": true
+				}
+			]
+		},
+		{
+			"id": "c3975232-231a-4ef6-a138-aa13609a8854",
+			"name": "PUT",
+			"time": 219,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status de sucesso código igual a 200": true,
+				"Successo na requisão do PUT": true,
+				"Resposta da requisão do PUT menor do que 2s": true
+			},
+			"testPassFailCounts": {
+				"Status de sucesso código igual a 200": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Successo na requisão do PUT": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Resposta da requisão do PUT menor do que 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				230,
+				221,
+				222,
+				219
+			],
+			"allTests": [
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do PUT": true,
+					"Resposta da requisão do PUT menor do que 2s": true
+				},
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do PUT": true,
+					"Resposta da requisão do PUT menor do que 2s": true
+				},
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do PUT": true,
+					"Resposta da requisão do PUT menor do que 2s": true
+				},
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do PUT": true,
+					"Resposta da requisão do PUT menor do que 2s": true
+				}
+			]
+		},
+		{
+			"id": "2c512aa6-085b-4c42-af14-c6a0aea44958",
+			"name": "DEL",
+			"time": 221,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status de sucesso código igual a 200": true,
+				"Successo na requisão do DEL": true,
+				"Resposta da requisão do PUT menor do que 2s": true
+			},
+			"testPassFailCounts": {
+				"Status de sucesso código igual a 200": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Successo na requisão do DEL": {
+					"pass": 4,
+					"fail": 0
+				},
+				"Resposta da requisão do PUT menor do que 2s": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				218,
+				218,
+				217,
+				221
+			],
+			"allTests": [
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do DEL": true,
+					"Resposta da requisão do PUT menor do que 2s": true
+				},
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do DEL": true,
+					"Resposta da requisão do PUT menor do que 2s": true
+				},
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do DEL": true,
+					"Resposta da requisão do PUT menor do que 2s": true
+				},
+				{
+					"Status de sucesso código igual a 200": true,
+					"Successo na requisão do DEL": true,
+					"Resposta da requisão do PUT menor do que 2s": true
+				}
+			]
+		}
+	],
+	"count": 4,
+	"totalTime": 4474,
+	"collection": {
+		"requests": [
+			{
+				"id": "6983810a-5295-463a-a18f-062a4734e39f",
+				"method": "GET"
+			},
+			{
+				"id": "57ce42ed-9889-4eb4-8ed0-3c208b6e4e70",
+				"method": "GET"
+			},
+			{
+				"id": "14b86304-087e-4ecc-a36a-9b2e41a5fc6d",
+				"method": "POST"
+			},
+			{
+				"id": "c3975232-231a-4ef6-a138-aa13609a8854",
+				"method": "PUT"
+			},
+			{
+				"id": "2c512aa6-085b-4c42-af14-c6a0aea44958",
+				"method": "DELETE"
+			}
+		]
+	}
+}
