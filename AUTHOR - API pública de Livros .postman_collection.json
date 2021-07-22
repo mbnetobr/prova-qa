@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "cc66dd1b-de4b-4395-a34f-d4141eb26d4b",
+		"name": "AUTHOR - API pública de Livros ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "GET Todos Autores",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.request.method == 'GET'){\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"\tpm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successo na requisão do GET\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"pm.test(\"Resposta da requisão do GET menor do que 2s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors",
+							"protocol": "https",
+							"host": [
+								"fakerestapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Authors"
+							]
+						},
+						"description": "Busca todos os autores"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Autor Especifico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.request.method == 'GET'){\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"\tpm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successo na requisão do GET\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 3000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"id_espc\", \"8\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/{{id_espc}}",
+							"protocol": "https",
+							"host": [
+								"fakerestapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Authors",
+								"{{id_espc}}"
+							]
+						},
+						"description": "Busca um autor específico"
+					},
+					"response": []
+				}
+			],
+			"description": "Busca Books\r\n\r\n"
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.request.method == 'POST'){\r",
+									"pm.test(\"Status de sucesso código igual a 200\", function () {\r",
+									"\tpm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"}\r",
+									"pm.test(\"Successo na requisão do POST\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"pm.test(\"Resposta da requisão do POST menor do que 2s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 250,\r\n  \"idBook\": 10,\r\n  \"firstName\": \"LIVRO API\",\r\n  \"lastName\": \"TESTE API\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors",
+							"protocol": "https",
+							"host": [
+								"fakerestapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Authors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "PUT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.request.method == 'PUT'){\r",
+									"pm.test(\"Status de sucesso código igual a 200\", function () {\r",
+									"\tpm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"}\r",
+									"pm.test(\"Successo na requisão do PUT\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"pm.test(\"Resposta da requisão do PUT menor do que 2s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"id_espc\", \"8\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 8,\r\n  \"idBook\": 3,\r\n  \"firstName\": \"teste api\",\r\n  \"lastName\": \"API TESTE\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/{{id_espc}}",
+							"protocol": "https",
+							"host": [
+								"fakerestapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Authors",
+								"{{id_espc}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Atualização de autor",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "DEL",
+			"item": [
+				{
+					"name": "DEL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.request.method == 'DELETE'){\r",
+									"pm.test(\"Status de sucesso código igual a 200\", function () {\r",
+									"\tpm.response.to.have.status(200);\r",
+									"});\r",
+									"}\r",
+									"pm.test(\"Successo na requisão do DEL\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+									"});\r",
+									"pm.test(\"Resposta da requisão do PUT menor do que 2s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"id_espc\", \"8\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://fakerestapi.azurewebsites.net/api/v1/Authors/{{id_espc}}",
+							"protocol": "https",
+							"host": [
+								"fakerestapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Authors",
+								"{{id_espc}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "EXCLUSÃO DE REGISTRO"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
