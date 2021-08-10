@@ -29,15 +29,19 @@ Quando('envio a requisição POST para {string} com {string} com {string}') do |
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
+Quando('que envio a requisição PUT para {string} com id {string}') do |path, id_author|
+  @endpoint = path
+  body = FactoryBot.build(:create_author).to_hash
+  body[:id] = id_author.to_i
+  @request = { url: "#{ENV['URI']}#{@endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
+  @result = $stdin.call(ApiFakerRest).put(@request)
+end
+
 Quando('envio a requisição GET para {string}') do |endpoint|
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
   @result = $stdin.call(ApiFakerRest).get(@request)
 end
 
-Quando('envio a requisição GET para {string} com id {string}') do |endpoint, id_author|
-  @request = { url: "#{ENV['URI']}#{endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']) }
-  @result = $stdin.call(ApiFakerRest).get(@request)
-end
 
 Quando('envio {string} vezes a requisição GET para {string} com id {string}') do |amount, endpoint, id_author|
   @request = { url: "#{ENV['URI']}#{endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']) }
