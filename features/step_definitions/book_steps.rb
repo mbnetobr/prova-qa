@@ -1,5 +1,5 @@
 Dado('que tenho um livro cadastrado') do
-  @book = $stdin.call(ApiFakerRest).get({ url: "#{ENV['URI']}/Books", header: JSON.parse(ENV['HEADER']) }).first
+  @book = $stdin.call(ApiFakerRest).get({ url: "#{ENV['URI']}/Books", header: JSON.parse(ENV['HEADER']) }).last
 end
 
 Quando('cadastro um livro com a requisição POST para {string}') do |path|
@@ -71,6 +71,11 @@ Quando('tento atualizar um livro com a requisição PUT para {string} com id ine
   @result = $stdin.call(ApiFakerRest).put(@request)
 end
 
+Quando('excluo um livro com a requisição DELETE para {string} com o id do livro') do |endpoint|
+  @request = { url: "#{ENV['URI']}#{endpoint}/#{@book['id']}", header: JSON.parse(ENV['HEADER']) }
+  @result = $stdin.call(ApiFakerRest).delete(@request)
+end
+
 Então('novo livro deve ser listado') do
   expected_body = @request[:body]
   @request = { url: "#{ENV['URI']}#{@endpoint}/#{JSON.parse(@request[:body])['id']}", header: JSON.parse(ENV['HEADER']) }
@@ -98,4 +103,14 @@ Então('resposta deve conter lista de livros com os campos preenchidos') do
     expect(obj.key?('publishDate')).to  be_truthy
     expect(obj['publishDate']).not_to   be_nil
   end
+end
+
+Então('consulta não deve exibir o livro excluído') do
+  expect(@result.key?('id')).to          be_falsey
+  expect(@result.key?('title')).to       be_falsey
+  expect(@result.key?('description')).to be_falsey
+  expect(@result.key?('pageCount')).to   be_falsey
+  expect(@result.key?('excerpt')).to     be_falsey
+  expect(@result.key?('publishDate')).to be_falsey
+  expect(@result.response.code).to       eql '404'
 end
