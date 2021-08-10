@@ -22,3 +22,8 @@ Funcionalidade: Cadastrar autor
     | 'firstName' | 'true' |
     | 'lastName'  | '123'  |
     | 'lastName'  | 'true' |
+
+  Cenário: Não cadastrar autor cujo id já esteja inserido na base
+    Dado que tenho um autor cadastrado
+    Quando que envio a requisição POST para "/Authors" com id do autor cadastrado
+    Então status da resposta deve ser "409"

@@ -1,9 +1,20 @@
+Dado('que tenho um autor cadastrado') do
+  @author = $stdin.call(ApiFakerRest).get({ url: "#{ENV['URI']}/Authors", header: JSON.parse(ENV['HEADER']) }).first
+end
+
 Quando('que envio a requisição POST para {string}') do |path|
   @endpoint = path
   body = FactoryBot.build(:create_author).to_hash
   authors = $stdin.call(ApiFakerRest).get({ url: "#{ENV['URI']}#{@endpoint}", header: JSON.parse(ENV['HEADER']) })
   body[:id] = authors.last['id'] + 100
   @request = { url: "#{ENV['URI']}#{@endpoint}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
+  @result = $stdin.call(ApiFakerRest).post(@request)
+end
+
+Quando('que envio a requisição POST para {string} com id do autor cadastrado') do |endpoint|
+  body = FactoryBot.build(:create_author).to_hash
+  body[:id] = @author['id']
+  @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
