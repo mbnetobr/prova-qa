@@ -35,3 +35,7 @@ Funcionalidade: Editar livro
     | 'publishDate' | '12-31-2000T00:00:00.00' |
     | 'publishDate' | '123'                    |
     | 'publishDate' | 'true'                   |
+
+  Cenario: Não editar livro cujo id não exista
+    Quando tento atualizar um livro com a requisição PUT para "/Books" com id inexistente
+    Então status da resposta deve ser "404"

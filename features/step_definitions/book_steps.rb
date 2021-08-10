@@ -58,6 +58,19 @@ Quando('tento atualizar um livro com a requisição PUT para {string} com {strin
   @result = $stdin.call(ApiFakerRest).put(@request)
 end
 
+Quando('tento atualizar um livro com a requisição PUT para {string} com id inexistente') do |endpoint|
+  @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
+  books = $stdin.call(ApiFakerRest).get(@request)
+  nonexistent_id = books.last['id'] + 1000
+
+  body = FactoryBot.build(:create_book).to_hash
+  body[:id] = nonexistent_id
+
+  @request[:url] << "/#{nonexistent_id}"
+  @request.merge!(body: body.to_json)
+  @result = $stdin.call(ApiFakerRest).put(@request)
+end
+
 Então('novo livro deve ser listado') do
   expected_body = @request[:body]
   @request = { url: "#{ENV['URI']}#{@endpoint}/#{JSON.parse(@request[:body])['id']}", header: JSON.parse(ENV['HEADER']) }
