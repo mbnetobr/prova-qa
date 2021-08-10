@@ -7,6 +7,13 @@ Quando('que envio a requisição POST para {string}') do |path|
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
+Quando('envio a requisição POST para {string} com {string} com {string}') do |endpoint, field, value|
+  body = FactoryBot.build(:create_author).to_hash
+  body = $stdin.call(ApiFakerRest).change_field_value(body, field, value)
+  @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
+  @result = $stdin.call(ApiFakerRest).post(@request)
+end
+
 Então('resposta deve conter corpo da requisição enviada') do
   expect(@result.response.body).to eql @result.response.body
 end
