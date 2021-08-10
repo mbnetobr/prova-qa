@@ -78,6 +78,11 @@ Quando('envio a requisição GET para {string} com id inexistente') do |endpoint
   @result = $stdin.call(ApiFakerRest).get(@request)
 end
 
+Quando('envio a requisição DELETE para {string} com o id do autor') do |endpoint|
+  @request = { url: "#{ENV['URI']}#{endpoint}/#{@author['id']}", header: JSON.parse(ENV['HEADER']) }
+  @result = $stdin.call(ApiFakerRest).delete(@request)
+end
+
 Então('resposta deve conter corpo da requisição enviada') do
   expect(@result.response.body).to eql @request[:body]
 end
@@ -113,4 +118,12 @@ end
 Então('resposta deve conter lista com 4 autores') do |authors|
   authors = authors.gsub("\n", '').gsub(', ', ',')
   expect(@result.response.body).to eql authors
+end
+
+Então('consulta não deve exibir o autor excluído') do
+  expect(@result.key?('id')).to        be_falsey
+  expect(@result.key?('idBook')).to    be_falsey
+  expect(@result.key?('firstName')).to be_falsey
+  expect(@result.key?('lastName')).to  be_falsey
+  expect(@result.response.code).to     eql '404'
 end
