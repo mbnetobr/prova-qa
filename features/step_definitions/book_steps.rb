@@ -7,6 +7,13 @@ Quando('cadastro um livro com a requisição POST para {string}') do |path|
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
+Quando('cadastro um livro com a requisição POST para {string} com {string} com {string}') do |endpoint, field, value|
+  body = FactoryBot.build(:create_book).to_hash
+  body = $stdin.call(ApiFakerRest).change_field_value(body, field, value)
+  @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
+  @result = $stdin.call(ApiFakerRest).post(@request)
+end
+
 Então('novo livro deve ser listado') do
   expected_body = @request[:body]
   @request = { url: "#{ENV['URI']}#{@endpoint}/#{JSON.parse(@request[:body])['id']}", header: JSON.parse(ENV['HEADER']) }
