@@ -25,6 +25,11 @@ Quando('envio a requisição POST para {string} com {string} com {string}') do |
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
+Quando('que envio a requisição GET para {string} com id {string}') do |endpoint, id_author|
+  @request = { url: "#{ENV['URI']}#{endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']) }
+  @result = $stdin.call(ApiFakerRest).get(@request)
+end
+
 Então('resposta deve conter corpo da requisição enviada') do
   expect(@result.response.body).to eql @result.response.body
 end
@@ -34,4 +39,8 @@ Então('novo autor deve ser listado') do
   @request = { url: "#{ENV['URI']}#{@endpoint}/#{JSON.parse(@request[:body])['id']}", header: JSON.parse(ENV['HEADER']) }
   @result = $stdin.call(ApiFakerRest).get(@request)
   expect(@result.response.body).to eql expected_body
+end
+
+Então('resposta deve conter corpo com dados do autor') do |author|
+  expect(@result.response.body).to eql author
 end
