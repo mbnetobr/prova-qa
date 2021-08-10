@@ -25,9 +25,19 @@ Quando('tento cadastrar um livro com a requisição POST para {string} com id do
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
+Quando('pesquiso um livro com a requisição GET para {string} com id {string}') do |endpoint, id_book|
+  @request = { url: "#{ENV['URI']}#{endpoint}/#{id_book}", header: JSON.parse(ENV['HEADER']) }
+  @result = $stdin.call(ApiFakerRest).get(@request)
+end
+
 Então('novo livro deve ser listado') do
   expected_body = @request[:body]
   @request = { url: "#{ENV['URI']}#{@endpoint}/#{JSON.parse(@request[:body])['id']}", header: JSON.parse(ENV['HEADER']) }
   @result = $stdin.call(ApiFakerRest).get(@request)
   expect(@result.response.body).to eql expected_body
+end
+
+Então('resposta deve conter corpo com dados do livro') do
+  book = YAML.load_file(File.join(Dir.pwd, 'features/support/fixtures/book_id_1.txt'))
+  expect(@result.parsed_response).to eql book
 end
