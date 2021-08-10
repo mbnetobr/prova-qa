@@ -22,11 +22,21 @@ def exception_message(scenario)
   puts "\nRESPONSE"
   puts "\n--------"
   puts "\ncode.: #{@result.response.code}"
-  puts "\nbody.: \n#{response.is_a?(Hash) || response.is_a?(Array) ? JSON.pretty_generate(response) : JSON.pretty_generate(JSON.parse(response))}"
+  print_response_body(response)
   puts "\n-------------"
   puts "\nINCONSISTENCY"
   puts "\n-------------"
   puts "\n🔥🔥🔥 #{scenario.exception.message.split('(')[0]}"
+end
+
+def print_response_body(response)
+  if response.is_a?(Hash) || response.is_a?(Array)
+    puts "\nbody.: \n#{JSON.pretty_generate(response)}"
+  elsif response.nil?
+    puts "\nbody.: null"
+  else
+    puts "\nbody.: \n#{JSON.pretty_generate(JSON.parse(response))}"
+  end
 end
 
 AfterConfiguration do |config|
