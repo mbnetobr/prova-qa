@@ -10,6 +10,7 @@ def exception_message(scenario)
   scene = scenario.failed?
   return unless scene == true
 
+  response = @result.parsed_response
   puts "\n-------------------------------------------- LOG ----------------------------------------------"
   puts "\nREQUEST"
   puts "\n-------"
@@ -21,7 +22,7 @@ def exception_message(scenario)
   puts "\nRESPONSE"
   puts "\n--------"
   puts "\ncode.: #{@result.response.code}"
-  puts "\nbody.: \n#{JSON.pretty_generate(JSON.parse(@result.request.options[:body]))}"
+  puts "\nbody.: \n#{response.is_a?(Hash) ? JSON.pretty_generate(response) : JSON.pretty_generate(JSON.parse(response))}"
   puts "\n-------------"
   puts "\nINCONSISTENCY"
   puts "\n-------------"
