@@ -11,7 +11,7 @@ def exception_message(scenario)
   return unless scene == true
 
   response = @result.parsed_response
-  puts "\n-------------------------------------------- LOG ----------------------------------------------"
+  puts "\n------------------------------------------- LOG --------------------------------------------"
   puts "\nREQUEST"
   puts "\n-------"
   puts "\nurl....: #{@result.request.http_method.to_s.gsub('Net::HTTP::', '').upcase} -> #{@result.request.last_uri}"

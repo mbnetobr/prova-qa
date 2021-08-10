@@ -1,3 +1,7 @@
+Dado('que tenho um livro cadastrado') do
+  @book = $stdin.call(ApiFakerRest).get({ url: "#{ENV['URI']}/Books", header: JSON.parse(ENV['HEADER']) }).first
+end
+
 Quando('cadastro um livro com a requisição POST para {string}') do |path|
   @endpoint = path
   body = FactoryBot.build(:create_book).to_hash
@@ -10,6 +14,13 @@ end
 Quando('cadastro um livro com a requisição POST para {string} com {string} com {string}') do |endpoint, field, value|
   body = FactoryBot.build(:create_book).to_hash
   body = $stdin.call(ApiFakerRest).change_field_value(body, field, value)
+  @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
+  @result = $stdin.call(ApiFakerRest).post(@request)
+end
+
+Quando('tento cadastrar um livro com a requisição POST para {string} com id do livro cadastrado') do |endpoint|
+  body = FactoryBot.build(:create_book).to_hash
+  body[:id] = @book['id']
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
   @result = $stdin.call(ApiFakerRest).post(@request)
 end

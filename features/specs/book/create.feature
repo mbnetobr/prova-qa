@@ -35,3 +35,8 @@ Funcionalidade: Cadastrar livro
     | 'publishDate' | '12-31-2000T00:00:00.00' |
     | 'publishDate' | '123'                    |
     | 'publishDate' | 'true'                   |
+
+  Cenário: Não cadastrar livro cujo id já esteja inserido na base
+    Dado que tenho um livro cadastrado
+    Quando tento cadastrar um livro com a requisição POST para "/Books" com id do livro cadastrado
+    Então status da resposta deve ser "409"
