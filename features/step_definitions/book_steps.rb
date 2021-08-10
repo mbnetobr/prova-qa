@@ -30,6 +30,11 @@ Quando('pesquiso um livro com a requisição GET para {string} com id {string}')
   @result = $stdin.call(ApiFakerRest).get(@request)
 end
 
+Quando('pesquiso todos os livros com a requisição GET para {string}') do |endpoint|
+  @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
+  @result = $stdin.call(ApiFakerRest).get(@request)
+end
+
 Então('novo livro deve ser listado') do
   expected_body = @request[:body]
   @request = { url: "#{ENV['URI']}#{@endpoint}/#{JSON.parse(@request[:body])['id']}", header: JSON.parse(ENV['HEADER']) }
@@ -40,4 +45,21 @@ end
 Então('resposta deve conter corpo com dados do livro') do
   book = YAML.load_file(File.join(Dir.pwd, 'features/support/fixtures/book_id_1.txt'))
   expect(@result.parsed_response).to eql book
+end
+
+Então('resposta deve conter lista de livros com os campos preenchidos') do
+  @result.each do |obj|
+    expect(obj.key?('id')).to        be_truthy
+    expect(obj['id']).not_to         be_nil
+    expect(obj.key?('title')).to    be_truthy
+    expect(obj['title']).not_to     be_nil
+    expect(obj.key?('description')).to be_truthy
+    expect(obj['description']).not_to  be_nil
+    expect(obj.key?('pageCount')).to  be_truthy
+    expect(obj['pageCount']).not_to   be_nil
+    expect(obj.key?('excerpt')).to  be_truthy
+    expect(obj['excerpt']).not_to   be_nil
+    expect(obj.key?('publishDate')).to  be_truthy
+    expect(obj['publishDate']).not_to   be_nil
+  end
 end
