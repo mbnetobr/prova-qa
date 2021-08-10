@@ -52,7 +52,7 @@ Você deve abrir uma Pull Request para [este repositório](https://github.com/mb
 
 ## Automação FakeRESTApi.Web V1
 
-  Projeto para FakeRESTApi.Web V1, o qual utiliza as seguintes ferramentas:
+  Projeto para validar a [FakeRESTApi.Web V1](https://fakerestapi.azurewebsites.net/index.html) de forma automatizada, o qual utiliza as seguintes ferramentas:
 
   - **[Ruby](https://www.ruby-lang.org/en/)**;
   - **[Cucumber](https://cucumber.io)** para escrita **[Gherkin](https://cucumber.io/docs/gherkin/reference/)**;
@@ -78,3 +78,29 @@ Você deve abrir uma Pull Request para [este repositório](https://github.com/mb
   - Para visualizar o resultado de todos os testes e gerar seu relatório em **.html** executar no terminal a partir da pasta raiz do projeto o comando: `cucumber -p default`.
 
   - Reports disponíveis em: **/report**, para visualizá-lo abra o arquivo `report.html` em um navegador de sua preferência.
+
+---
+
+## Testes Manuais com Postman
+
+  Projeto para testar a [FakeRESTApi.Web V1](https://fakerestapi.azurewebsites.net/index.html) de forma manual, o qual utiliza o [Postman](https://www.postman.com) como ferramenta de validações
+
+  [Postman](https://www.postman.com/downloads)
+
+## Pré-requisito: 
+
+  - [Postman](https://www.postman.com/downloads) instalado.
+
+## Configuração do ambiente
+
+### Importando o projeto
+
+  - Com a aplicação do Postman aberta clique em: **File > Import**
+  - Na aba **File**, clique no botão **Upload Files** e navegue até a pasta do projeto de automação **prova-qa > postman** e selecione o arquivo com a coleção de requisições (`requests_fake_rest_api_v1.postman_collection.json`) e clique no botão **Import**;
+  - Repita o processo clicando em: **File > Import**
+  - Na aba **File**, clique no botão **Upload Files** e navegue até a pasta do projeto de automação **prova-qa > postman** e agora selecione o arquivo com as variáveis de ambiente (`environment_variables_fake_rest_api_v1.postman_environment.json`) e clique no botão **Import**;
+
+### Execução
+
+  - Com a aplicação do Postman aberta navegue até a aba **Collections > FakeRESTApi.V1**
+  - Agora basta selecionar dentro das pastas: **Autores** ou **Livros**, a requisição que deseja testar e clicar no botão **Send**
