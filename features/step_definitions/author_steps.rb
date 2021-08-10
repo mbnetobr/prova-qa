@@ -37,6 +37,13 @@ Quando('que envio a requisição PUT para {string} com id {string}') do |path, i
   @result = $stdin.call(ApiFakerRest).put(@request)
 end
 
+Quando('envio a requisição PUT para {string} com {string} com {string} com id {string}') do |endpoint, field, value, id_author|
+  body = FactoryBot.build(:create_author).to_hash
+  body = $stdin.call(ApiFakerRest).change_field_value(body, field, value)
+  @request = { url: "#{ENV['URI']}#{endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
+  @result = $stdin.call(ApiFakerRest).put(@request)
+end
+
 Quando('envio a requisição GET para {string}') do |endpoint|
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
   @result = $stdin.call(ApiFakerRest).get(@request)
