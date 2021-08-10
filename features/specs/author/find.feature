@@ -24,3 +24,7 @@ Funcionalidade: Consultar autor
      {"id":3,"idBook":1,"firstName":"First Name 3","lastName":"Last Name 3"},
      {"id":4,"idBook":1,"firstName":"First Name 4","lastName":"Last Name 4"}]
     """
+
+  Cenario: Não buscar autor cujo id não exista
+    Quando envio a requisição GET para "/Authors" com id inexistente
+    Então status da resposta deve ser "404"

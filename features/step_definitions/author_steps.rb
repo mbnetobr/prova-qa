@@ -35,6 +35,14 @@ Quando('envio a requisição GET para {string} com id {string}') do |endpoint, i
   @result = $stdin.call(ApiFakerRest).get(@request)
 end
 
+Quando('envio a requisição GET para {string} com id inexistente') do |endpoint|
+  @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
+  authors = $stdin.call(ApiFakerRest).get(@request)
+  nonexistent_id = authors.last['id'] + 1000
+  @request[:url] << "/#{nonexistent_id}"
+  @result = $stdin.call(ApiFakerRest).get(@request)
+end
+
 Então('resposta deve conter corpo da requisição enviada') do
   expect(@result.response.body).to eql @result.response.body
 end
