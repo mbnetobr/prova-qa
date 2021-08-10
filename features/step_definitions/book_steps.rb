@@ -43,6 +43,14 @@ Quando('tento pesquisar livro com a requisição GET para {string} com id inexis
   @result = $stdin.call(ApiFakerRest).get(@request)
 end
 
+Quando('atualizo um livro com a requisição PUT para {string} com id {string}') do |path, id_book|
+  @endpoint = path
+  body = FactoryBot.build(:create_book).to_hash
+  body[:id] = id_book.to_i
+  @request = { url: "#{ENV['URI']}#{@endpoint}/#{id_book}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
+  @result = $stdin.call(ApiFakerRest).put(@request)
+end
+
 Então('novo livro deve ser listado') do
   expected_body = @request[:body]
   @request = { url: "#{ENV['URI']}#{@endpoint}/#{JSON.parse(@request[:body])['id']}", header: JSON.parse(ENV['HEADER']) }
@@ -57,16 +65,16 @@ end
 
 Então('resposta deve conter lista de livros com os campos preenchidos') do
   @result.each do |obj|
-    expect(obj.key?('id')).to        be_truthy
-    expect(obj['id']).not_to         be_nil
-    expect(obj.key?('title')).to    be_truthy
-    expect(obj['title']).not_to     be_nil
-    expect(obj.key?('description')).to be_truthy
-    expect(obj['description']).not_to  be_nil
-    expect(obj.key?('pageCount')).to  be_truthy
-    expect(obj['pageCount']).not_to   be_nil
-    expect(obj.key?('excerpt')).to  be_truthy
-    expect(obj['excerpt']).not_to   be_nil
+    expect(obj.key?('id')).to           be_truthy
+    expect(obj['id']).not_to            be_nil
+    expect(obj.key?('title')).to        be_truthy
+    expect(obj['title']).not_to         be_nil
+    expect(obj.key?('description')).to  be_truthy
+    expect(obj['description']).not_to   be_nil
+    expect(obj.key?('pageCount')).to    be_truthy
+    expect(obj['pageCount']).not_to     be_nil
+    expect(obj.key?('excerpt')).to      be_truthy
+    expect(obj['excerpt']).not_to       be_nil
     expect(obj.key?('publishDate')).to  be_truthy
     expect(obj['publishDate']).not_to   be_nil
   end
