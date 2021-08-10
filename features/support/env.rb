@@ -9,3 +9,4 @@ require 'report_builder'
 require 'rspec'
 
 require_relative 'models/author'
+require_relative 'models/book'

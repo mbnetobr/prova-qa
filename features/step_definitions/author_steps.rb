@@ -88,10 +88,6 @@ Quando('excluo um autor com a requisição DELETE para {string} com o id do auto
   @result = $stdin.call(ApiFakerRest).delete(@request)
 end
 
-Então('resposta deve conter corpo da requisição enviada') do
-  expect(@result.response.body).to eql @request[:body]
-end
-
 Então('novo autor deve ser listado') do
   expected_body = @request[:body]
   @request = { url: "#{ENV['URI']}#{@endpoint}/#{JSON.parse(@request[:body])['id']}", header: JSON.parse(ENV['HEADER']) }
