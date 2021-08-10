@@ -44,11 +44,23 @@ Quando('envio a requisição PUT para {string} com {string} com {string} com id 
   @result = $stdin.call(ApiFakerRest).put(@request)
 end
 
+Quando('envio a requisição PUT para {string} com id inexistente') do |endpoint|
+  @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
+  authors = $stdin.call(ApiFakerRest).get(@request)
+  nonexistent_id = authors.last['id'] + 1000
+
+  body = FactoryBot.build(:create_author).to_hash
+  body[:id] = nonexistent_id
+
+  @request[:url] << "/#{nonexistent_id}"
+  @request.merge!(body: body.to_json)
+  @result = $stdin.call(ApiFakerRest).put(@request)
+end
+
 Quando('envio a requisição GET para {string}') do |endpoint|
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
   @result = $stdin.call(ApiFakerRest).get(@request)
 end
-
 
 Quando('envio {string} vezes a requisição GET para {string} com id {string}') do |amount, endpoint, id_author|
   @request = { url: "#{ENV['URI']}#{endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']) }

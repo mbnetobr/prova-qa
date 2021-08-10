@@ -22,3 +22,7 @@ Funcionalidade: Editar autor
     | 'firstName' | 'true' |
     | 'lastName'  | '123'  |
     | 'lastName'  | 'true' |
+ 
+  Cenario: Não editar autor cujo id não exista
+    Quando envio a requisição PUT para "/Authors" com id inexistente
+    Então status da resposta deve ser "404"
