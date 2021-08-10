@@ -51,6 +51,13 @@ Quando('atualizo um livro com a requisição PUT para {string} com id {string}')
   @result = $stdin.call(ApiFakerRest).put(@request)
 end
 
+Quando('tento atualizar um livro com a requisição PUT para {string} com {string} com {string} com id {string}') do |endpoint, field, value, id_book|
+  body = FactoryBot.build(:create_book).to_hash
+  body = $stdin.call(ApiFakerRest).change_field_value(body, field, value)
+  @request = { url: "#{ENV['URI']}#{endpoint}/#{id_book}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
+  @result = $stdin.call(ApiFakerRest).put(@request)
+end
+
 Então('novo livro deve ser listado') do
   expected_body = @request[:body]
   @request = { url: "#{ENV['URI']}#{@endpoint}/#{JSON.parse(@request[:body])['id']}", header: JSON.parse(ENV['HEADER']) }
