@@ -25,6 +25,11 @@ Quando('envio a requisição POST para {string} com {string} com {string}') do |
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
+Quando('envio a requisição GET para {string}') do |endpoint|
+  @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
+  @result = $stdin.call(ApiFakerRest).get(@request)
+end
+
 Quando('que envio a requisição GET para {string} com id {string}') do |endpoint, id_author|
   @request = { url: "#{ENV['URI']}#{endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']) }
   @result = $stdin.call(ApiFakerRest).get(@request)
@@ -43,4 +48,17 @@ end
 
 Então('resposta deve conter corpo com dados do autor') do |author|
   expect(@result.response.body).to eql author
+end
+
+Então('resposta deve conter lista de autores com os campos preenchidos') do
+  @result.each do |obj|
+    expect(obj.key?('id')).to        be_truthy
+    expect(obj['id']).not_to         be_nil
+    expect(obj.key?('idBook')).to    be_truthy
+    expect(obj['idBook']).not_to     be_nil
+    expect(obj.key?('firstName')).to be_truthy
+    expect(obj['firstName']).not_to  be_nil
+    expect(obj.key?('lastName')).to  be_truthy
+    expect(obj['lastName']).not_to   be_nil
+  end
 end
