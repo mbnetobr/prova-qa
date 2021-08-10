@@ -6,7 +6,7 @@ Dado('que tenho o autor') do |author|
   @author = author
 end
 
-Quando('que envio a requisição POST para {string}') do |path|
+Quando('cadastro um autor com a requisição POST para {string}') do |path|
   @endpoint = path
   body = FactoryBot.build(:create_author).to_hash
   authors = $stdin.call(ApiFakerRest).get({ url: "#{ENV['URI']}#{@endpoint}", header: JSON.parse(ENV['HEADER']) })
@@ -15,21 +15,21 @@ Quando('que envio a requisição POST para {string}') do |path|
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
-Quando('que envio a requisição POST para {string} com id do autor cadastrado') do |endpoint|
+Quando('tento cadastrar um autor com a requisição POST para {string} com id do autor cadastrado') do |endpoint|
   body = FactoryBot.build(:create_author).to_hash
   body[:id] = @author['id']
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
-Quando('envio a requisição POST para {string} com {string} com {string}') do |endpoint, field, value|
+Quando('cadastro um autor com a requisição POST para {string} com {string} com {string}') do |endpoint, field, value|
   body = FactoryBot.build(:create_author).to_hash
   body = $stdin.call(ApiFakerRest).change_field_value(body, field, value)
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
   @result = $stdin.call(ApiFakerRest).post(@request)
 end
 
-Quando('que envio a requisição PUT para {string} com id {string}') do |path, id_author|
+Quando('atualizo um autor com a requisição PUT para {string} com id {string}') do |path, id_author|
   @endpoint = path
   body = FactoryBot.build(:create_author).to_hash
   body[:id] = id_author.to_i
@@ -37,14 +37,14 @@ Quando('que envio a requisição PUT para {string} com id {string}') do |path, i
   @result = $stdin.call(ApiFakerRest).put(@request)
 end
 
-Quando('envio a requisição PUT para {string} com {string} com {string} com id {string}') do |endpoint, field, value, id_author|
+Quando('tento atualizar um autor com a requisição PUT para {string} com {string} com {string} com id {string}') do |endpoint, field, value, id_author|
   body = FactoryBot.build(:create_author).to_hash
   body = $stdin.call(ApiFakerRest).change_field_value(body, field, value)
   @request = { url: "#{ENV['URI']}#{endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']), body: body.to_json }
   @result = $stdin.call(ApiFakerRest).put(@request)
 end
 
-Quando('envio a requisição PUT para {string} com id inexistente') do |endpoint|
+Quando('tento atualizar um autor com a requisição PUT para {string} com id inexistente') do |endpoint|
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
   authors = $stdin.call(ApiFakerRest).get(@request)
   nonexistent_id = authors.last['id'] + 1000
@@ -57,7 +57,12 @@ Quando('envio a requisição PUT para {string} com id inexistente') do |endpoint
   @result = $stdin.call(ApiFakerRest).put(@request)
 end
 
-Quando('envio a requisição GET para {string}') do |endpoint|
+Quando('pesquiso um autor com a requisição GET para {string} com id {string}') do |endpoint, id_author|
+  @request = { url: "#{ENV['URI']}#{endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']) }
+  @result = $stdin.call(ApiFakerRest).get(@request)
+end
+
+Quando('pesquiso todos os autores com a requisição GET para {string}') do |endpoint|
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
   @result = $stdin.call(ApiFakerRest).get(@request)
 end
@@ -70,7 +75,7 @@ Quando('envio {string} vezes a requisição GET para {string} com id {string}') 
   end
 end
 
-Quando('envio a requisição GET para {string} com id inexistente') do |endpoint|
+Quando('tento pesquisar autor com a requisição GET para {string} com id inexistente') do |endpoint|
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
   authors = $stdin.call(ApiFakerRest).get(@request)
   nonexistent_id = authors.last['id'] + 1000
@@ -78,7 +83,7 @@ Quando('envio a requisição GET para {string} com id inexistente') do |endpoint
   @result = $stdin.call(ApiFakerRest).get(@request)
 end
 
-Quando('envio a requisição DELETE para {string} com o id do autor') do |endpoint|
+Quando('excluo um autor com a requisição DELETE para {string} com o id do autor') do |endpoint|
   @request = { url: "#{ENV['URI']}#{endpoint}/#{@author['id']}", header: JSON.parse(ENV['HEADER']) }
   @result = $stdin.call(ApiFakerRest).delete(@request)
 end

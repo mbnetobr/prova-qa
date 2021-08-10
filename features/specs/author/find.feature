@@ -2,7 +2,7 @@
 Funcionalidade: Consultar autor
 
   Cenário: Buscar autor com sucesso
-    Quando envio a requisição GET para "/Authors" com id "1"
+    Quando pesquiso um autor com a requisição GET para "/Authors" com id "1"
     Então status da resposta deve ser "200"
     E resposta deve conter corpo com dados do autor
     """
@@ -10,12 +10,12 @@ Funcionalidade: Consultar autor
     """
 
   Cenario: Listar todas os autores com sucesso
-    Quando envio a requisição GET para "/Authors"
+    Quando pesquiso todos os autores com a requisição GET para "/Authors"
     Então status da resposta deve ser "200"
     E resposta deve conter lista de autores com os campos preenchidos
 
   Cenario: Buscar autor por livro com sucesso
-    Quando envio a requisição GET para "/Authors/authors/books" com id "1"
+    Quando pesquiso um autor com a requisição GET para "/Authors/authors/books" com id "1"
     Então status da resposta deve ser "200"
     E resposta deve conter lista com 4 autores
     """
@@ -26,7 +26,7 @@ Funcionalidade: Consultar autor
     """
 
   Cenario: Não buscar autor cujo id não exista
-    Quando envio a requisição GET para "/Authors" com id inexistente
+    Quando tento pesquisar autor com a requisição GET para "/Authors" com id inexistente
     Então status da resposta deve ser "404"
 
   Cenario: Validar consistência nas respostas da consulta do mesmo autor
