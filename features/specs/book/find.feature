@@ -10,3 +10,7 @@ Funcionalidade: Consultar livro
     Quando pesquiso todos os livros com a requisição GET para "/Books"
     Então status da resposta deve ser "200"
     E resposta deve conter lista de livros com os campos preenchidos
+
+  Cenario: Não buscar livro cujo id não exista
+    Quando tento pesquisar livro com a requisição GET para "/Books" com id inexistente
+    Então status da resposta deve ser "404"
