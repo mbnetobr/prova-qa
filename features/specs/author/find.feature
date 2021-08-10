@@ -28,3 +28,11 @@ Funcionalidade: Consultar autor
   Cenario: Não buscar autor cujo id não exista
     Quando envio a requisição GET para "/Authors" com id inexistente
     Então status da resposta deve ser "404"
+
+  Cenario: Validar consistência nas respostas da consulta do mesmo autor
+    Dado que tenho o autor
+    """
+    {"id":590,"idBook":195,"firstName":"First Name 590","lastName":"Last Name 590"}
+    """
+    Quando envio "10" vezes a requisição GET para "/Authors" com id "590"
+    Então resposta deve conter corpo com dados do autor requisitado

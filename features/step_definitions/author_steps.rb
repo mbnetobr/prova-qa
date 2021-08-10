@@ -2,6 +2,10 @@ Dado('que tenho um autor cadastrado') do
   @author = $stdin.call(ApiFakerRest).get({ url: "#{ENV['URI']}/Authors", header: JSON.parse(ENV['HEADER']) }).first
 end
 
+Dado('que tenho o autor') do |author|
+  @author = author
+end
+
 Quando('que envio a requisição POST para {string}') do |path|
   @endpoint = path
   body = FactoryBot.build(:create_author).to_hash
@@ -35,6 +39,14 @@ Quando('envio a requisição GET para {string} com id {string}') do |endpoint, i
   @result = $stdin.call(ApiFakerRest).get(@request)
 end
 
+Quando('envio {string} vezes a requisição GET para {string} com id {string}') do |amount, endpoint, id_author|
+  @request = { url: "#{ENV['URI']}#{endpoint}/#{id_author}", header: JSON.parse(ENV['HEADER']) }
+  (1..amount.to_i).each_with_index do |_k, i|
+    @result = $stdin.call(ApiFakerRest).get(@request)
+    raise "API apresentou inconsistência na [#{i + 1}]ª requisição" unless @result.response.body.eql?(@author)
+  end
+end
+
 Quando('envio a requisição GET para {string} com id inexistente') do |endpoint|
   @request = { url: "#{ENV['URI']}#{endpoint}", header: JSON.parse(ENV['HEADER']) }
   authors = $stdin.call(ApiFakerRest).get(@request)
@@ -44,7 +56,7 @@ Quando('envio a requisição GET para {string} com id inexistente') do |endpoint
 end
 
 Então('resposta deve conter corpo da requisição enviada') do
-  expect(@result.response.body).to eql @result.response.body
+  expect(@result.response.body).to eql @request[:body]
 end
 
 Então('novo autor deve ser listado') do
@@ -56,6 +68,10 @@ end
 
 Então('resposta deve conter corpo com dados do autor') do |author|
   expect(@result.response.body).to eql author
+end
+
+Então('resposta deve conter corpo com dados do autor requisitado') do
+  expect(@result.response.body).to eql @author
 end
 
 Então('resposta deve conter lista de autores com os campos preenchidos') do
