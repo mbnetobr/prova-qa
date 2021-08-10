@@ -1,0 +1,9 @@
+---
+  default: -p bdd -p html -p json
+  ci: -p bdd -p html -p json
+
+  bdd: --format pretty
+  progress: --format progress
+
+  html: --format html --out=report/report.html
+  json: --format json --out=report/report.json

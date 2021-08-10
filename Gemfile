@@ -1,0 +1,13 @@
+source 'https://rubygems.org'
+
+gem 'awesome_print', '1.8'
+gem 'byebug', '~> 11.1', '>= 11.1.3'
+gem 'cucumber', '3.1.2'
+gem 'dotenv', '2.7'
+gem 'factory_bot', '6.1'
+gem 'faker', '2.15'
+gem 'httparty', '0.18.1'
+gem 'report_builder'
+gem 'rspec'
+gem 'rubocop', '0.82.0'
+gem 'solargraph'

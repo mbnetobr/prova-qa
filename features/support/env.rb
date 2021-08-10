@@ -1,0 +1,11 @@
+require 'active_support/time'
+require 'awesome_print'
+require 'byebug'
+require 'dotenv/load'
+require 'factory_bot'
+require 'faker'
+require 'httparty'
+require 'report_builder'
+require 'rspec'
+
+require_relative 'models/author'

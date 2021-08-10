@@ -1,0 +1,40 @@
+---
+  AllCops:
+    NewCops: disable
+
+  Style/Documentation:
+    Enabled: false
+
+  Style/FrozenStringLiteralComment:
+    Enabled: false
+
+  Naming/MethodName:
+    Enabled: false
+
+  Naming/AsciiIdentifiers:
+    Enabled: false
+
+  Layout/LineLength:
+    Max: 160
+
+  Metrics/MethodLength:
+    Exclude:
+      - 'features/support/models/*.rb'
+      - 'features/support/libs/*.rb'
+    Max: 20
+
+  Metrics/AbcSize:
+    Enabled: false
+
+  Metrics/BlockLength:
+    Exclude:
+      - 'features/support/factories/*.rb'
+
+  Metrics/CyclomaticComplexity:
+    Max: 10
+
+  Metrics/ClassLength:
+    Enabled: false
+
+  Style/RedundantSort:
+    Enabled: false
