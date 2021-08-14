@@ -75,7 +75,7 @@ Você deve abrir uma Pull Request para [este repositório](https://github.com/mb
 
 ### Execução
 
-  - Para visualizar o resultado de todos os testes e gerar seu relatório em **.html** executar no terminal a partir da pasta raiz do projeto o comando: `cucumber -p default`.
+  - Para visualizar o resultado de todos os testes e gerar seu relatório em **.html** executar no terminal a partir da pasta raiz do projeto o comando: `cucumber`.
 
   - Reports disponíveis em: **/report**, para visualizá-lo abra o arquivo `report.html` em um navegador de sua preferência.
 

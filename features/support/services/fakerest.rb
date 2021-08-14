@@ -1,18 +1,18 @@
 class ApiFakerRest
   def get(req)
-    HTTParty.get(req[:url], params: req[:params], headers: req[:header])
+    HTTParty.get(req[:url], query: req[:params], headers: req[:header])
   end
 
   def post(req)
-    HTTParty.post(req[:url], params: req[:params], headers: req[:header], body: req[:body])
+    HTTParty.post(req[:url], query: req[:params], headers: req[:header], body: req[:body])
   end
 
   def put(req)
-    HTTParty.put(req[:url], params: req[:params], headers: req[:header], body: req[:body])
+    HTTParty.put(req[:url], query: req[:params], headers: req[:header], body: req[:body])
   end
 
   def delete(req)
-    HTTParty.delete(req[:url], params: req[:params], headers: req[:header])
+    HTTParty.delete(req[:url], query: req[:params], headers: req[:header])
   end
 
   def change_field_value(hash, field, vle)
