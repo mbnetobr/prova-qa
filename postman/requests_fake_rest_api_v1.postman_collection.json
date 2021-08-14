@@ -1,0 +1,689 @@
+{
+	"info": {
+		"_postman_id": "735f0f51-bdf2-4046-8f05-75d731605b5f",
+		"name": "FakeRESTApi.V1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autores",
+			"item": [
+				{
+					"name": "Todos autores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Authors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Authors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Authors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; v=1.0"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": -67678537,\n  \"idBook\": 39775534,\n  \"firstName\": \"cillum cupidatat labore\",\n  \"lastName\": \"do\"\n },\n {\n  \"id\": 37096391,\n  \"idBook\": -12920968,\n  \"firstName\": \"aliquip eiusmod\",\n  \"lastName\": \"dolor paria\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Consultar autor",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Authors/595",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Authors",
+								"595"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Authors/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; v=1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"<integer>\",\n \"idBook\": \"<integer>\",\n \"firstName\": \"<string>\",\n \"lastName\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Consultar autor por livro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Authors/authors/books/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Authors",
+								"authors",
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Authors/authors/books/:idBook",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors",
+										"authors",
+										"books",
+										":idBook"
+									],
+									"variable": [
+										{
+											"key": "idBook"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; v=1.0"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": \"<integer>\",\n  \"idBook\": \"<integer>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\"\n },\n {\n  \"id\": \"<integer>\",\n  \"idBook\": \"<integer>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Cadastrar autor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; v=1.0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 600,\n    \"idBook\": 1,\n    \"firstName\": \"Nome600\",\n    \"lastName\": \"Sobrenome600\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Authors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Authors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<integer>\",\n    \"idBook\": \"<integer>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Authors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; v=1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"<integer>\",\n \"idBook\": \"<integer>\",\n \"firstName\": \"<string>\",\n \"lastName\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Editar autor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; v=1.0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 595,\n    \"idBook\": 1,\n    \"firstName\": \"Nome595\",\n    \"lastName\": \"Sobrenome595\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Authors/595",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Authors",
+								"595"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<integer>\",\n    \"idBook\": \"<integer>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Authors/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; v=1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"<integer>\",\n \"idBook\": \"<integer>\",\n \"firstName\": \"<string>\",\n \"lastName\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Remover autor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/Authors/10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Authors",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Authors/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Authors",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Livros",
+			"item": [
+				{
+					"name": "Consultar todos os livros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Books",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; v=1.0"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": 79904702,\n  \"title\": \"est dolore dolore\",\n  \"description\": \"Duis ut amet\",\n  \"pageCount\": 29918228,\n  \"excerpt\": \"cupidatat et veniam mol\",\n  \"publishDate\": \"2015-11-02T08:20:27.339Z\"\n },\n {\n  \"id\": -27035426,\n  \"title\": \"id voluptate\",\n  \"description\": \"consequat ipsum consectetur voluptate\",\n  \"pageCount\": 35687299,\n  \"excerpt\": \"nisi\",\n  \"publishDate\": \"1973-07-04T03:36:23.118Z\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Consultar livro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Books/150",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Books",
+								"150"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Books/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; v=1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"<integer>\",\n \"title\": \"<string>\",\n \"description\": \"<string>\",\n \"pageCount\": \"<integer>\",\n \"excerpt\": \"<string>\",\n \"publishDate\": \"<dateTime>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Cadastrar livro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; v=1.0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 201,\n    \"title\": \"Livro id 201\",\n    \"description\": \"Descrição do Livro id 201\",\n    \"pageCount\": 80,\n    \"excerpt\": \"Testando cadastro do Livro id 201\",\n    \"publishDate\": \"2011-01-01T03:00:00.000Z\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"pageCount\": \"<integer>\",\n    \"excerpt\": \"<string>\",\n    \"publishDate\": \"<dateTime>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Books",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Editar livro",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; v=1.0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 150,\n    \"title\": \"Livro id 150\",\n    \"description\": \"Descrição do Livro id 150\",\n    \"pageCount\": 80,\n    \"excerpt\": \"Testando cadastro do Livro id 150\",\n    \"publishDate\": \"2011-01-01T03:00:00.000Z\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Books/150",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Books",
+								"150"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"pageCount\": \"<integer>\",\n    \"excerpt\": \"<string>\",\n    \"publishDate\": \"<dateTime>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Books/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Remover livro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/Books/199",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"Books",
+								"199"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/Books/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "f6f529a2-772a-4120-a2d5-d825027bb00e",
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
