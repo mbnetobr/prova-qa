@@ -18,7 +18,7 @@ Este desafio tem o intuito de avaliar suas habilidades em testes automatizados e
 
 2. Construa na Ferramenta Postman as requisições para as collections escolhidas
 
-3. Elabore um projeto de Testes Automatizados de API com o **Framework e Linguagem de sua preferência**
+3. Elabore um projeto de Testes Automatizados de API com o **Cypress e Node**
 
 Você deve abrir uma Pull Request para [este repositório](https://github.com/mbnetobr/prova-qa), contendo os itens a seguir:
 
