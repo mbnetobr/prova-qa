@@ -44,6 +44,4 @@ Você deve abrir uma Pull Request para [este repositório](https://github.com/mb
 
 3. Foque em construir um projeto simples mais bem elaborado, utilize algum padrão de projeto, gere relatórios, reutilize código etc.
 
-4. Mostre que você é **Sênior**, se ainda não é, mostre que pode se tornar.
-
-5. Qualquer dúvida não exite em entrar em contato: manuel.neto.maitha@trademaster.com.br
+4. Qualquer dúvida não exite em entrar em contato: manuel.neto.maitha@trademaster.com.br
