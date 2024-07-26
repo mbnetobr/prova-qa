@@ -34,7 +34,7 @@ Você deve abrir uma Pull Request para [este repositório](https://github.com/mb
  
 2. Em seguida, implemente sua solução seguindo as instruções que estão acima.
 
-3. Envie o link do seu Pull Request, com a resultado da prova, para manuel.neto@trademaster.com.br com cópia para seu headhunter.
+3. Envie o link do seu Pull Request, com a resultado da prova, para manuel.neto.maitha@trademaster.com.br com cópia para seu headhunter.
 
 ## Pontos de Atenção
 
@@ -46,4 +46,4 @@ Você deve abrir uma Pull Request para [este repositório](https://github.com/mb
 
 4. Mostre que você é **Sênior**, se ainda não é, mostre que pode se tornar.
 
-5. Qualquer dúvida não exite em entrar em contato: manuel.neto@trademaster.com.br
+5. Qualquer dúvida não exite em entrar em contato: manuel.neto.maitha@trademaster.com.br
