@@ -1,4 +1,12 @@
 # Prova QA
+Documentação "https://fakerestapi.azurewebsites.net/index.html"
+
+- Para executar com relatório utilizar: 'npm run test'
+- Para acessar o report: Pasta reports>assets>index.html
+  Clique com o botão direito do mouse e clique em "Open In Default Browser" 
+- Para executar o cypress e verificar o funcionamento, utilzar : "npx Cypress open"
+
+
 
 Este desafio tem o intuito de avaliar suas habilidades em testes automatizados e manuais.
 
