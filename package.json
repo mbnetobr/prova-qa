@@ -1,0 +1,21 @@
+{
+  "name": "prova-qa",
+  "version": "1.0.0",
+  "description": "Este desafio tem o intuito de avaliar suas habilidades em testes automatizados e manuais.",
+  "main": "index.js",
+  "scripts": {
+  "test": "cypress run",
+  "report": "marge cypress/reports/*.json -o cypress/reports --reportPageTitle='My Test Suite Report' --inline"
+  },
+  "keywords": [],
+  "author": "Caio de Abreu Duarte",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.13.2",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "mochawesome": "^7.1.3"
+  },
+  "dependencies": {
+    "faker": "^5.5.3"
+  }
+}
